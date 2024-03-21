@@ -22,6 +22,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
@@ -46,6 +47,7 @@ class MainActivity : ComponentActivity() {
                     width = Dimension.matchParent
                     height = Dimension.value(100.dp)
                 }
+                createVerticalChain(greenBox,blueBox, chainStyle = ChainStyle.Packed) // chain in constraintLayout compose
             }
             ConstraintLayout(constraintsSet, modifier = Modifier.fillMaxSize()) {
                 Box(
