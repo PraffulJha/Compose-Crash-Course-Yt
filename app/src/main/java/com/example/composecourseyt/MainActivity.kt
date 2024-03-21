@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
@@ -26,20 +28,20 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val scrollState = rememberScrollState()
-            Column(
-                modifier = Modifier.verticalScroll(scrollState)
+            LazyColumn(
+//                modifier = Modifier.verticalScroll(scrollState)
             ) {
-                for (i in 1..50) {
-                    Text(
-                        text = "Item $i",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.Bold,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(vertical = 24.dp)
-                    )
-                }
+                itemsIndexed(listOf("This","is","Jetpack","Compose")) { index, string ->
+                   Text(
+                       text = "Item: $string", // lazy load - load on scrolling item
+                       fontSize = 24.sp,
+                       fontWeight = FontWeight.Bold,
+                       textAlign = TextAlign.Center,
+                       modifier = Modifier
+                           .fillMaxWidth()
+                           .padding(vertical = 24.dp)
+                   )
+               }
             }
         }
     }
